@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacto - Ramé Editorial</title>
+    <link rel="stylesheet" href="contacto.css">
+</head>
+<body>
+
+<div class="contenedor">
+
+    <h1>Envíanos tu Queja o Sugerencia</h1>
+
+    <form action="mailto:contacto@RameEditorial.com" method="post" enctype="text/plain">
+
+        <div class="grupo">
+            <label>Nombre</label>
+            <input type="text" name="Nombre" required>
+        </div>
+
+        <div class="grupo">
+            <label>Correo Electrónico</label>
+            <input type="email" name="Correo" required>
+        </div>
+
+        <div class="grupo">
+            <label>Tipo de mensaje</label>
+            <select name="Tipo">
+                <option>Queja</option>
+                <option>Sugerencia</option>
+            </select>
+        </div>
+
+        <div class="grupo">
+            <label>Mensaje</label>
+            <textarea name="Mensaje" rows="5" required></textarea>
+        </div>
+
+        <button type="submit">Enviar Mensaje</button>
+        <a href="principal.html" class="btn">Volver</a>
+    </form>
+   
+</div>
+
+
+</body>
+</html>

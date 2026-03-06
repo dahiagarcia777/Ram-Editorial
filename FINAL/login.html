@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Iniciar sesión</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.login-box{
+background:white;
+padding:30px;
+border-radius:8px;
+width:300px;
+text-align:center;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+button{
+padding:10px;
+width:100%;
+background:#000;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+<h2>Iniciar Sesión</h2>
+
+<input type="text" id="usuario" placeholder="Usuario">
+
+<input type="password" id="password" placeholder="Contraseña">
+
+<button onclick="login()">Entrar</button>
+
+<p>¿No tienes cuenta?</p>
+
+<button onclick="registro()">Registrarse</button>
+
+</div>
+
+<script>
+
+function registro(){
+
+let usuario=document.getElementById("usuario").value;
+let password=document.getElementById("password").value;
+
+localStorage.setItem("usuario",usuario);
+localStorage.setItem("password",password);
+
+alert("Usuario registrado");
+
+}
+
+function login(){
+
+let usuario=document.getElementById("usuario").value;
+let password=document.getElementById("password").value;
+
+let userGuardado=localStorage.getItem("usuario");
+let passGuardado=localStorage.getItem("password");
+
+if(usuario==userGuardado && password==passGuardado){
+
+alert("Bienvenido "+usuario);
+
+window.location.href="principal.html";
+
+}else{
+
+alert("Usuario o contraseña incorrectos");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

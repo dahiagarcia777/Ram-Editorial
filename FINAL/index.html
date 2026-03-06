@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ramé Editorial - Iniciar sesión</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.caja{
+background:white;
+padding:30px;
+border-radius:8px;
+width:300px;
+text-align:center;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+input{
+width:100%;
+padding:10px;
+margin:8px 0;
+}
+
+button{
+width:100%;
+padding:10px;
+margin-top:10px;
+border:none;
+background:black;
+color:white;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="caja">
+
+<h2>Ramé Editorial</h2>
+
+<h3>Iniciar sesión</h3>
+
+<input type="text" id="usuario" placeholder="Usuario">
+
+<input type="password" id="password" placeholder="Contraseña">
+
+<button onclick="login()">Entrar</button>
+
+<hr>
+
+<h3>Registrarse</h3>
+
+<input type="text" id="nuevoUsuario" placeholder="Nuevo usuario">
+
+<input type="password" id="nuevaPassword" placeholder="Nueva contraseña">
+
+<button onclick="registrar()">Crear cuenta</button>
+
+</div>
+
+<script>
+
+function registrar(){
+
+let usuario=document.getElementById("nuevoUsuario").value;
+let password=document.getElementById("nuevaPassword").value;
+
+if(usuario=="" || password==""){
+alert("Completa todos los campos");
+return;
+}
+
+localStorage.setItem("usuario",usuario);
+localStorage.setItem("password",password);
+
+alert("Cuenta creada correctamente");
+
+}
+
+function login(){
+
+let usuario=document.getElementById("usuario").value;
+let password=document.getElementById("password").value;
+
+let userGuardado=localStorage.getItem("usuario");
+let passGuardado=localStorage.getItem("password");
+
+if(usuario===userGuardado && password===passGuardado){
+
+window.location.href="principal.html";
+
+}else{
+
+alert("Usuario o contraseña incorrectos");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

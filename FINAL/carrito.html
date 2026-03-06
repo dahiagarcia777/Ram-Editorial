@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Tu Carrito - Ramé Editorial</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.carrito-container {
+    width: 80%;
+    margin: 30px auto;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.item img {
+    width: 80px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.info {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.info h4 {
+    margin: 0;
+}
+
+.precio {
+    font-weight: bold;
+    color: #112250;
+}
+
+.eliminar {
+    background: crimson;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.total-box {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btn-finalizar {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 25px;
+    background: #112250;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+</style>
+
+</head>
+<body>
+
+<h2>Tu Carrito 🛒</h2>
+
+<div class="carrito-container" id="lista"></div>
+
+<div class="carrito-container">
+    <div class="total-box" id="total"></div>
+    <a href="formulario.html">
+        <button class="btn-finalizar">Finalizar Compra</button>
+        <a href="principal.html" class="btn">Volver</a>
+    </a>
+    
+</div>
+
+
+<script>
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+let lista = document.getElementById("lista");
+let total = 0;
+
+function mostrarCarrito() {
+    lista.innerHTML = "";
+    total = 0;
+
+    carrito.forEach((producto, index) => {
+        total += producto.precio;
+
+        lista.innerHTML += `
+            <div class="item">
+                <img src="${obtenerImagen(producto.nombre)}">
+                <div class="info">
+                    <h4>${producto.nombre}</h4>
+                    <p class="precio">$${producto.precio}</p>
+                </div>
+                <button class="eliminar" onclick="eliminarProducto(${index})">X</button>
+            </div>
+        `;
+    });
+
+    document.getElementById("total").innerText = "Total: $" + total;
+}
+
+function eliminarProducto(index) {
+    carrito.splice(index, 1);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    mostrarCarrito();
+}
+
+function obtenerImagen(nombre) {
+    if(nombre === "Alas de Sangre") return "ads.jpg";
+    if(nombre === "Alas de Hierro") return "adh.jpg";
+    if(nombre === "Alas de Onix") return "ado.jpg";
+    return "https://via.placeholder.com/80x110";
+}
+
+mostrarCarrito();
+</script>
+
+</body>
+</html>

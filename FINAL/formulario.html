@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Formulario de Compra - Ramé Editorial</title>
+<link rel="stylesheet" href="estilo.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #111, #2c003e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    background: white;
+    padding: 40px;
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2c003e;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #6a0dad;
+    outline: none;
+    box-shadow: 0 0 5px rgba(106,13,173,0.5);
+}
+
+.btn-comprar {
+    width: 100%;
+    padding: 12px;
+    background: #6a0dad;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-comprar:hover {
+    background: #4b0082;
+}
+</style>
+
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Formulario de Compra</h2>
+
+    <form>
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" required>
+        </div>
+
+        <div class="form-group">
+            <label>Correo</label>
+            <input type="email" required>
+        </div>
+
+        <div class="form-group">
+            <label>Dirección</label>
+            <input type="text" required>
+        </div>
+
+        <div class="form-group">
+            <label>Método de pago</label>
+            <select>
+                <option>Tarjeta</option>
+                <option>Nequi</option>
+                <option>Contra entrega</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn-comprar">
+            Finalizar Compra
+        </button>
+    </form>
+</div>
+<a href="principal.html" class="btn">Volver</a>
+
+</body>
+</html>

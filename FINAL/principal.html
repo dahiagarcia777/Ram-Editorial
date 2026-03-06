@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ramé Editorial</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">Ramé Editorial</div>
+
+<div class="carrito-icono" onclick="irAlCarrito()">
+🛒 <span id="contador">0</span>
+</div>
+
+<!-- BUSCADOR -->
+<div class="buscador">
+    <input type="text" id="buscarLibro" placeholder="Buscar libro...">
+    <button onclick="buscarLibro()">🔍</button>
+    <p id="mensajeBusqueda" class="mensaje-busqueda"></p>
+  </div>
+
+<nav>
+<ul>
+<li><a href="principal.html">Inicio</a></li>
+<li><a href="pagina2.html">Productos</a></li>
+<li><a href="quienes-somos.html">Quiénes Somos</a></li>
+<li><a href="contacto.html">Contacto</a></li>
+<li><a href="carrito.html">Carrito</a></li>
+<li><a href="login.html">Iniciar sesión</a></li>
+</ul>
+</nav>
+
+</header>
+
+<section id="inicio" class="banner">
+<h1>Bienvenido a Ramé Editorial</h1>
+<p>Descubre historias que transforman tu mundo</p>
+<a href="pagina2.html" class="btn">Ver Productos</a>
+<a href="contacto.html" class="btn contacto-btn">Contacto</a>
+</section>
+
+<section class="recomendados">
+
+<h2>Libros Recomendados</h2>
+
+<div class="grid-libros">
+
+<div class="libro">
+<a href="LIBRO1.HTML">
+<img src="ads.jpg" alt="ADS">
+<h3>Alas de Sangre</h3>
+<p>Rebecca Yarros</p>
+</a>
+<button onclick="agregarAlCarrito('Alas de Sangre', 70000)">
+Agregar al carrito
+</button>
+</div>
+
+<div class="libro">
+<a href="LIBRO2.HTML">
+<img src="adh.jpg" alt="ADH">
+<h3>Alas de Hierro</h3>
+<p>Rebecca Yarros</p>
+</a>
+<button onclick="agregarAlCarrito('Alas de Hierro', 85000)">
+Agregar al carrito
+</button>
+</div>
+
+<div class="libro">
+<a href="LIBRO3.HTML">
+<img src="ado.jpg" alt="ADO">
+<h3>Alas de Onix</h3>
+<p>Rebecca Yarros</p>
+</a>
+<button onclick="agregarAlCarrito('Alas de Onix', 90000)">
+Agregar al carrito
+</button>
+</div>
+
+</div>
+</section>
+
+<section class="presentacion">
+<div class="card">
+<h2>¿Quiénes Somos?</h2>
+<p>
+Somos una editorial inspirada en el estilo moderno de grandes
+casas literarias. Nuestro objetivo es conectar lectores
+con historias inolvidables.
+</p>
+</div>
+</section>
+
+<section id="contacto" class="contacto">
+<h2>Contacto</h2>
+<p>Email: contacto@RaméEditorial.com</p>
+<p>Teléfono: +57 300 000 0000</p>
+</section>
+
+<footer>
+<p>© 2026 Ramé Editorial</p>
+</footer>
+
+<script>
+
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+document.getElementById("contador").innerText = carrito.length;
+
+function agregarAlCarrito(nombre, precio) {
+carrito.push({nombre, precio});
+localStorage.setItem("carrito", JSON.stringify(carrito));
+document.getElementById("contador").innerText = carrito.length;
+alert(nombre + " agregado al carrito 🛒");
+}
+
+function irAlCarrito() {
+window.location.href = "carrito.html";
+}
+
+function buscarLibro() {
+    let busqueda = document.getElementById("buscarLibro").value.trim().toLowerCase();
+    let mensaje = document.getElementById("mensajeBusqueda");
+
+    // Array con todos los libros
+    const libros = [
+        {nombre: "alas de sangre", url: "LIBRO1.HTML"},
+        {nombre: "alas de hierro", url: "LIBRO2.HTML"},
+        {nombre: "alas de onix", url: "LIBRO3.HTML"}
+    ];
+
+    // Buscar libro
+    const libroEncontrado = libros.find(libro => libro.nombre === busqueda);
+
+    if(libroEncontrado){
+        window.location.href = libroEncontrado.url;
+    } else {
+        mensaje.textContent = "Libro no encontrado ";
+        setTimeout(() => mensaje.textContent = "", 3000); // mensaje desaparece en 3s
+    }
+}
+
+</script>
+
+</body>
+</html>
